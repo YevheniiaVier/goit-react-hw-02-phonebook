@@ -1,9 +1,9 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import shortid from 'shortid';
 
 import { StyledForm, StyledInput, StyledLabel } from './Form.styled';
-// import { Input } from './Input';
+
 import { Button } from './Button';
 
 export class Form extends Component {
@@ -23,7 +23,7 @@ export class Form extends Component {
     e.preventDefault();
 
     this.props.onSubmit(this.state);
-
+    e.currentTarget.reset();
     this.reset();
   };
   reset = () => {
@@ -32,7 +32,7 @@ export class Form extends Component {
   render() {
     // const { name, number } = this.state;
     return (
-      <StyledForm onSubmit={this.handleSubmit}>
+      <StyledForm autoComplete="off" onSubmit={this.handleSubmit}>
         <StyledLabel htmlFor={this.nameInputId}>Name</StyledLabel>
         <StyledInput
           type="text"
@@ -44,7 +44,6 @@ export class Form extends Component {
           id={this.nameInputId}
         />
         <StyledLabel htmlFor={this.telInputId}>Number</StyledLabel>
-
         <StyledInput
           type="tel"
           name="number"
@@ -54,9 +53,12 @@ export class Form extends Component {
           onChange={this.handleChange}
           id={this.telInputId}
         />
-
         <Button text="Add contact" type="submit" />
       </StyledForm>
     );
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

@@ -4,10 +4,11 @@ import { Container } from './App.styled';
 import { Form } from 'components/Form/Form';
 import { ContactList } from 'components/ContactList/ContactList';
 import initialContacts from '../../contacts.json';
-
+import { Filter } from 'components/Filter/Filter';
 export class App extends Component {
   state = {
     contacts: initialContacts,
+    filter: '',
   };
 
   addContact = ({ name, number }) => {
@@ -20,12 +21,25 @@ export class App extends Component {
       contacts: [...contacts, contact],
     }));
   };
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+  getFilteredContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const filteredContacts = this.getFilteredContacts();
     return (
       <Container>
         <Form onSubmit={this.addContact} />
-        <ContactList contacts={contacts} />
+        <Filter onChange={this.changeFilter} />
+
+        <ContactList contacts={filteredContacts} />
       </Container>
     );
   }
