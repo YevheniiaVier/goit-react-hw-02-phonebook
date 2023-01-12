@@ -1,18 +1,22 @@
 [
   {
     "id": "id-1",
-    "name": "Mira Vierovchuk"
+    "name": "Mira Vierovchuk",
+    "number": "33-44-55"
   },
   {
     "id": "id-2",
-    "name": "Solomiia Vierovchuk"
+    "name": "Solomiia Vierovchuk",
+    "number": "33-44-85"
   },
   {
     "id": "id-3",
-    "name": "Elina Vierovchuk"
+    "name": "Elina Vierovchuk",
+    "number": "33-44-542"
   },
   {
     "id": "id-4",
-    "name": "Oksana Shkarupa"
+    "name": "Oksana Shkarupa",
+    "number": "33-44-654"
   }
 ]

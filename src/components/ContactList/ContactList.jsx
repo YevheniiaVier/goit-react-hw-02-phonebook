@@ -1,15 +1,14 @@
 // import PropTypes from 'prop-types';
-// import shortid from 'shortid';
 
 import { StyledContacts, ContactItem } from './ContactList.styled';
 
 export const ContactList = ({ contacts }) => {
-  //   const ContactId = shortid.generate();
-
   return (
     <StyledContacts>
       {contacts.map(contact => (
-        <ContactItem key={contact.id}>{contact.name}</ContactItem>
+        <ContactItem key={contact.id}>
+          {contact.name}: {contact.number}
+        </ContactItem>
       ))}
     </StyledContacts>
   );
