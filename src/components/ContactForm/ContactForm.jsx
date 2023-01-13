@@ -2,15 +2,16 @@ import PropTypes from 'prop-types';
 import { Component } from 'react';
 import shortid from 'shortid';
 
-import { StyledForm, StyledInput, StyledLabel } from './Form.styled';
+import { StyledForm, StyledInput, StyledLabel } from './ContactForm.styled';
 
 import { Button } from './Button';
 
-export class Form extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
+
   nameInputId = shortid.generate();
   telInputId = shortid.generate();
 
@@ -21,16 +22,35 @@ export class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { elements } = e.currentTarget;
+
+    if (
+      this.props.actualContacts.find(
+        contact => elements.name.value === contact.name
+      )
+    ) {
+      return alert(`${elements.name.value} is already in contacts`);
+    }
+
+    const foundNumber = this.props.actualContacts.find(
+      contact => elements.number.value === contact.number
+    );
+    if (foundNumber) {
+      return alert(
+        `${elements.number.value} is already belong to ${foundNumber.name}`
+      );
+    }
 
     this.props.onSubmit(this.state);
     e.currentTarget.reset();
     this.reset();
   };
+
   reset = () => {
     this.setState({ name: '', number: '' });
   };
+
   render() {
-    // const { name, number } = this.state;
     return (
       <StyledForm autoComplete="off" onSubmit={this.handleSubmit}>
         <StyledLabel htmlFor={this.nameInputId}>Name</StyledLabel>
@@ -53,12 +73,19 @@ export class Form extends Component {
           onChange={this.handleChange}
           id={this.telInputId}
         />
-        <Button text="Add contact" type="submit" />
+        <Button text="Add contact" type="submit" active={false} />
       </StyledForm>
     );
   }
 }
 
-Form.propTypes = {
+ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  actualContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
