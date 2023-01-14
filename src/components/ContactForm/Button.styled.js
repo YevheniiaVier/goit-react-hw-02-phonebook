@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
+width: 200px;
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.large};
   padding-top: ${p => p.theme.space[4]}px;
