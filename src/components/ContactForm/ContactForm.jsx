@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import shortid from 'shortid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+import { Button } from './Button';
 import {
   StyledForm,
   StyledInput,
@@ -9,7 +12,7 @@ import {
   Box,
 } from './ContactForm.styled';
 
-import { Button } from './Button';
+const notify = text => toast(text);
 
 export class ContactForm extends Component {
   state = {
@@ -36,14 +39,14 @@ export class ContactForm extends Component {
         contact => elements.name.value === contact.name
       )
     ) {
-      return alert(`${elements.name.value} is already in contacts`);
+      return notify(`${elements.name.value} is already in contacts`);
     }
 
     const foundNumber = this.props.actualContacts.find(
       contact => elements.number.value === contact.number
     );
     if (foundNumber) {
-      return alert(
+      return notify(
         `${elements.number.value} is already belong to ${foundNumber.name}`
       );
     }
@@ -99,6 +102,7 @@ export class ContactForm extends Component {
           </StyledLabel>
         </Box>
         <Button text="Add contact" type="submit" active={false} />
+        <ToastContainer />
       </StyledForm>
     );
   }
