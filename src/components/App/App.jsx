@@ -73,7 +73,7 @@ export class App extends Component {
           />
         )}
         {!filteredContacts[0] && contacts[0] && (
-          <Notification text="No contacts found" imgPath={noContactImg} />
+          <Notification text="No contact found" imgPath={noContactImg} />
         )}
       </Container>
     );
