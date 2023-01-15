@@ -18,4 +18,7 @@ export const Button = ({ text, type, active, onClick, disabled }) => {
 Button.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };

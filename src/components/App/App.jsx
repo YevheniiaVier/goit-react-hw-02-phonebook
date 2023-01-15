@@ -21,7 +21,6 @@ export class App extends Component {
       number,
       avatar: avatar ?? defaultUserImg,
     };
-    console.log(this.state.contacts);
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
