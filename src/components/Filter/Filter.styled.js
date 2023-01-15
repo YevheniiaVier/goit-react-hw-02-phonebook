@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFilter = styled.input`
+  cursor: pointer;
   background-color: ${p => p.theme.colors.transparent};
   border: ${p => `2px solid ${p.theme.colors.accentDark}`};
   height: 30px;
@@ -27,7 +28,7 @@ export const StyledFilter = styled.input`
 `;
 export const FilterLabel = styled.label`
   color: ${p => p.theme.colors.secondary};
-
+  cursor: pointer;
   position: relative;
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
