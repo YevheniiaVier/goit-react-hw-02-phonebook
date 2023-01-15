@@ -6,7 +6,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Title } from 'components/Title/Title';
 import { Notification } from 'components/Notification/Notification';
-import noContactImg from '../../images/no-contacts.jpg';
+import noContactImg from '../../images/no-contacts.png';
 
 import initialContacts from '../../contacts.json';
 import defaultUserImg from '../../images/default.png';
@@ -68,9 +68,12 @@ export class App extends Component {
           />
         ) : (
           <Notification
-            text="There is no contacts yet, you can add a new one!"
+            text="There is no contact yet, you can add a new one!"
             imgPath={noContactImg}
           />
+        )}
+        {!filteredContacts[0] && contacts[0] && (
+          <Notification text="No contacts found" imgPath={noContactImg} />
         )}
       </Container>
     );

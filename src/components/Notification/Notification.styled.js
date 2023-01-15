@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const NotificationText = styled.p`
-  padding: ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[4]}px;
   color: ${p => p.theme.colors.accentDark};
-  margin: 0 auto;
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.l};
+  margin-bottom: ${p => p.theme.space[2]}px;
 `;
 
 export const NotificationImg = styled.img.attrs(props => ({
@@ -15,6 +15,15 @@ export const NotificationImg = styled.img.attrs(props => ({
   width: 300px;
   display: block;
   margin: 0 auto;
-  margin-top: ${p => p.theme.space[4]}px;
-  border-radius: ${p => p.theme.radii.round};
+  border-radius: ${p => p.theme.radii.normal};
+  background-color: ${p => p.theme.colors.transparent};
+`;
+
+export const NotificationBox = styled.div`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  position: relative;
 `;

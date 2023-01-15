@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
 
-import { NotificationImg, NotificationText } from './Notification.styled';
+import {
+  NotificationImg,
+  NotificationText,
+  NotificationBox,
+} from './Notification.styled';
 
 export const Notification = ({ text, imgPath }) => {
   return (
-    <NotificationText>
-      {text}
+    <NotificationBox>
+      <NotificationText>{text}</NotificationText>
       <NotificationImg src={imgPath} alt={text} />
-    </NotificationText>
+    </NotificationBox>
   );
 };
 
 Notification.propTypes = {
   text: PropTypes.string,
-  imgPath: PropTypes.string.isRequired,
+  imgPath: PropTypes.string,
 };
