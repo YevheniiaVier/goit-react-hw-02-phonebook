@@ -14,6 +14,7 @@ gap: ${p => p.theme.space[5]}px};
 `;
 export const StyledInput = styled.input`
   outline: none;
+  cursor: pointer;
   border: ${p => `2px solid ${p.theme.colors.accentDark}`};
   border-radius: ${p => p.theme.radii.large};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
