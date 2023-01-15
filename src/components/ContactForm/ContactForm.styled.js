@@ -28,6 +28,7 @@ export const StyledInput = styled.input`
 `;
 export const StyledLabel = styled.label`
   position: absolute;
+  cursor: pointer;
   font-size: ${p => p.theme.fontSizes.l};
   top: 0;
   padding: ${p => p.theme.space[3]}px};
