@@ -5,6 +5,9 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { Title } from 'components/Title/Title';
+import { Notification } from 'components/Notification/Notification';
+import noContactImg from '../../images/no-contacts.jpg';
+
 import initialContacts from '../../contacts.json';
 import defaultUserImg from '../../images/default.png';
 
@@ -58,10 +61,17 @@ export class App extends Component {
           onClear={this.onClearBtnClick}
         />
         <Title text="Contacts" />
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        {contacts[0] ? (
+          <ContactList
+            contacts={filteredContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        ) : (
+          <Notification
+            text="There is no contacts yet, you can add a new one!"
+            imgPath={noContactImg}
+          />
+        )}
       </Container>
     );
   }
